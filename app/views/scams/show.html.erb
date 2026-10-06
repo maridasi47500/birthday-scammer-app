@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @scam %>
+
+<div>
+  <%= link_to "Edit this scam", edit_scam_path(@scam) %> |
+  <%= link_to "Back to scams", scams_path %>
+
+  <%= button_to "Destroy this scam", @scam, method: :delete %>
+</div>

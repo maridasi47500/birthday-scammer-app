@@ -1,0 +1,2 @@
+class Socialmedia < ApplicationRecord
+end

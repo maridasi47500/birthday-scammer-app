@@ -1,0 +1,19 @@
+class CreateUsers < ActiveRecord::Migration[8.1]
+  def change
+    create_table :users do |t|
+      t.string :email_address, null: false
+      t.string :password_digest, null: false
+      t.string :dateofbirth
+      t.string :firstname
+      t.string :lastname
+      t.string :pic
+      t.integer :socialnetwork_id
+      t.string :lat
+      t.string :lon
+      t.string :placename
+
+      t.timestamps
+    end
+    add_index :users, :email_address, unique: true
+  end
+end

@@ -1,0 +1,62 @@
+<%= form_with(model: scam) do |form| %>
+  <% if scam.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(scam.errors.count, "error") %> prohibited this scam from being saved:</h2>
+
+      <ul>
+        <% scam.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :post_id, style: "display: block" %>
+    <%= form.text_field :post_id %>
+  </div>
+
+  <div>
+    <%= form.label :scammer_type, style: "display: block" %>
+    <%= form.text_field :scammer_type %>
+  </div>
+
+  <div>
+    <%= form.label :person_name, style: "display: block" %>
+    <%= form.text_field :person_name %>
+  </div>
+
+  <div>
+    <%= form.label :dateofbirth, style: "display: block" %>
+    <%= form.text_field :dateofbirth %>
+  </div>
+
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div>
+    <%= form.label :phone, style: "display: block" %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div>
+    <%= form.label :current_place, style: "display: block" %>
+    <%= form.text_field :current_place %>
+  </div>
+
+  <div>
+    <%= form.label :moreinfo, style: "display: block" %>
+    <%= form.text_field :moreinfo %>
+  </div>
+
+  <div>
+    <%= form.label :scammerdescription, style: "display: block" %>
+    <%= form.text_field :scammerdescription %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

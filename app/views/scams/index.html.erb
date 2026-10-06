@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Scams" %>
+
+<h1>Scams</h1>
+
+<div id="scams">
+  <% @scams.each do |scam| %>
+    <%= render scam %>
+    <p>
+      <%= link_to "Show this scam", scam %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New scam", new_scam_path %>

@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Socialmedia" %>
+
+<h1>Socialmedia</h1>
+
+<div id="socialmedia">
+  <% @socialmedia.each do |socialmedia| %>
+    <%= render socialmedia %>
+    <p>
+      <%= link_to "Show this socialmedia", socialmedia %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New socialmedia", new_socialmedia_path %>

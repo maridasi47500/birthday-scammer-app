@@ -1,0 +1,2 @@
+module ScamsHelper
+end

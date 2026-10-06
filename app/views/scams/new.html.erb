@@ -1,0 +1,11 @@
+<% content_for :title, "New scam" %>
+
+<h1>New scam</h1>
+
+<%= render "form", scam: @scam %>
+
+<br>
+
+<div>
+  <%= link_to "Back to scams", scams_path %>
+</div>
