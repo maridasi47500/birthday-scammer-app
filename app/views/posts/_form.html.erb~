@@ -12,8 +12,10 @@
   <% end %>
 
   <div>
+    <%=session.as_json%>
+    <%=authenticated?.try(:user).as_json%>
     <%= form.label :user_id, style: "display: block" %>
-    <%= form.hidden_field :user_id, value: authenticated?.try(:user).try(:id) %>
+    <%= form.hidden_field :user_id, value: "" %>
   </div>
 
   <div>

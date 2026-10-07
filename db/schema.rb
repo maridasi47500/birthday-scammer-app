@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_06_214015) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_06_214954) do
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "pic"
@@ -21,6 +21,21 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_214015) do
     t.datetime "updated_at", null: false
     t.index ["socialmedia_id"], name: "index_posts_on_socialmedia_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "scams", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.string "scammer_type"
+    t.string "person_name"
+    t.string "dateofbirth"
+    t.string "email"
+    t.string "phone"
+    t.string "current_place"
+    t.string "moreinfo"
+    t.string "scammerdescription"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_scams_on_post_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -56,5 +71,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_06_214015) do
 
   add_foreign_key "posts", "socialmedia"
   add_foreign_key "posts", "users"
+  add_foreign_key "scams", "posts"
   add_foreign_key "sessions", "users"
 end

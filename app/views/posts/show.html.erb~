@@ -4,8 +4,6 @@
 <h3>scams</h3>
 <%if  @post.scams.length > 0 %>
 <%= render @post.scams %>
-<%else%>
-  <p>il n'y a aucun scam pour ce post</p>
 <%end%>
 
 <div>

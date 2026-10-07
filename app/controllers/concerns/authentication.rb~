@@ -10,6 +10,12 @@ module Authentication
     def allow_unauthenticated_access(**options)
       skip_before_action :require_authentication, **options
     end
+    def unauthenticated_access_only(**options)
+      allow_unauthenticated_access **options
+      before_action -> { redirect_to root_path if authenticated? }, **options
+    end
+
+
   end
 
   private
@@ -25,6 +31,9 @@ module Authentication
       Current.session ||= find_session_by_cookie
     end
 
+    #def current_user
+    #  (Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]).try(:user)
+    #end
     def find_session_by_cookie
       Session.find_by(id: cookies.signed[:session_id]) if cookies.signed[:session_id]
     end

@@ -2,9 +2,23 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :socialmedia
   after_create :scam
+  has_many :scams
   def scam
-    if content.lowercase.include?("happy birthday")
-      Scam.create(post: self, person_name: post.user.full_name, dateofbirth: post.user.dateofbirth, scammerdescription: "c'est un scam de la date de naissance")
+    if content.downcase.include?("happy birthday")
+      Scam.create(post: self, person_name: self.user.full_name, dateofbirth: self.user.dateofbirth, scammerdescription: "c'est un scam de la date de naissance")
     end
   end
+  def pic=(uploaded_io)
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+    write_attribute(:pic, uploaded_io.original_filename)
+  rescue => e
+    write_attribute(:pic, "birthdaycake.png")
+  end
+  def pic
+    read_attribute(:pic)
+
+  end
+
 end
