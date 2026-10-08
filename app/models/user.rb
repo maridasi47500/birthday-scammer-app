@@ -1,3 +1,4 @@
+require 'geocoder'
 class User < ApplicationRecord
   has_secure_password
   attr_accessor :agecelebrated
@@ -15,6 +16,20 @@ class User < ApplicationRecord
     if !agecelebrated.nil? and agecelebrated.length > 0
       self.dateofbirth=(Date.today - agecelebrated.to_i.years).to_s
     end
+    if placename.to_s.length > 0
+      results = Geocoder.search(placename)
+
+      if results.first
+        self.lat = results.first.latitude
+        self.lon = results.first.longitude
+        coords = results.first.coordinates # Returns [lat, lon] array
+
+        puts "Latitude: #{lat}, Longitude: #{lon}"
+      end
+    end
+  rescue => e
+    p "hello"
+      
   end
   def pic=(uploaded_io)
     File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|

@@ -6,7 +6,7 @@
 
   <div>
     <strong>Pic:</strong>
-    <img src="/uploads/<%= post.pic %>" style="max-width: 200px;max-height: 200px;" />
+    <img src="/uploads/<%= post.pic %>" />
   </div>
 
   <div>

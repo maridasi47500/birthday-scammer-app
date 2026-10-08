@@ -25,7 +25,7 @@
   </div>
   <div>
     <%= form.label :agecelebrated, "age celebrated exactly today" %>
-    <%= form.date_field :agecelebrated %>
+    <%= form.number_field :agecelebrated %>
   </div>
   <div>
     <%= form.label :lat %>
